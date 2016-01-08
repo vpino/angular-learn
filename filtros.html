@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="filtros">
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Filtros - Expresiones </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+	
+	<body>
+
+	<h1> Pantalón azul</h1>
+	<hr>
+	<!-- Para usar filtros se coloca la dupla |
+			* En este caso usamos currency
+			* Para darle un valor se coloca : y el valor -->
+	<h3> Costo {{ 15 | currency: "USD $" }} </h3>
+	<h3> Costo {{ 12 | currency: "BSF $"}} </h3>
+
+	<!-- Transforma el string a minisculas por medio de un filtro 
+		 * lowercase: transforma toda una cadena a minisculas -->
+	<p> {{ "PROCEDENCIA" | lowercase }}</p>
+
+	<!-- uppercase: transforma toda una cadena a mayusculas --> 
+	<ul>
+		<li> {{ "China" | uppercase }} </li>
+		<li> {{ "ruSIa" | uppercase }} </li>
+		<li> {{ "VeneZuela" | uppercase }} </li>
+		<li> {{ "PeRu" | uppercase }} </li>
+	</ul>
+
+	<!-- El filtro number sirve para especificar cuantos decimales
+		se quieren mostrar de una cantidad. -->
+	<p> Nivel de venta del vendedor {{ 92.121212124 | number: 2 }} % </p>
+
+	<!-- Convierte de boolean a number -->
+	<p> Stock: {{ false | number }}</p>
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var filtros = angular.module('filtros', []);
+
+
+
+		</script>
+
+	</body>
+
+</html>

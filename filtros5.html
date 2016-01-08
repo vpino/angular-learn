@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="filtrodatos">
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Filtros personalizados </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+	
+	<body>
+
+		<!-- Creamos un modelo, para luego pasarlo como filtro al
+		     controlador, mediante la directiva ng-repeat -->
+		<input type="text" ng-model="buscarFruta">
+
+		<div ng-controller="listas">
+			
+			<!-- La directiva ng-repeat: simula un for 
+				* Con el filter hacemos una busqueda para
+				que muestre solo los <li> que el usuario tipie 
+				en el input que contiene la directiva ng-model="buscarFruta"
+
+				* orderBy filtro que nos permite ordenar la lista 
+				  Se usa pasandole la propiedad del objeto entre comillas simples
+				  Y el signo de + para ordenar de forma normal 
+				  Y el signo de - de manera inversa -->
+			<ul>
+				<li ng-repeat="fruta in frutas | filter: buscarFruta | orderBy: '+nombre'"> 
+
+					<h2> {{ fruta.nombre }}</h2>
+
+					<p> Fruta de color {{ fruta.color }} conocida por ser {{ fruta.propiedades }}</p>
+
+				</li>
+			</ul>
+
+		</div>
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var miApp = angular.module('filtrodatos', []);
+
+			/* Creamos un controlador */
+			miApp.controller('listas', function ($scope) {
+				
+				/* Creamos un array de objetos */
+				$scope.frutas = [
+					{
+						nombre: 'Kiwi',
+						color: 'Verde',
+						propiedades: 'rica en vitamina C'
+					},
+
+					{
+						nombre: 'Manzana',
+						color: 'Rojo',
+						propiedades: 'rica en vitamina E'
+					},
+
+					{
+						nombre: 'Pera',
+						color: 'Verde',
+						propiedades: 'rica en vitamina A'
+					}
+
+				];
+
+			});
+
+
+		</script>
+
+	</body>
+
+</html>

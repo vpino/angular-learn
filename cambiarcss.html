@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Estilos </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+
+	<style type="text/css">
+
+		img{
+			display: block;
+			margin: auto;
+		}
+
+		.preguntas{
+			width: 400px;
+			margin: 30px auto;
+			background: silver;
+			padding: 20px;
+			text-align: center;
+
+		}
+
+		.segundoEstilo{
+
+			background: blue;
+
+		}
+
+	</style>
+	
+	<body ng-app="estiloApp">
+
+		<div ng-controller="controladorEstilos">
+
+		<!-- ng-src: Directiva que permite cambiar la ruta de 
+					la imagen dinamicamente -->
+		<img ng-src="{{ imagenActiva }}" >
+
+			<!-- ng-hide: Directiva para ocultar el elemento
+				 ng-show: Directiva para mostar el elemento -->
+			<div ng-hide="ocultarImagen">
+				<img src="img.jpg">
+			</div>
+
+			<!-- ng-switch: Directiva que funciona como la estructura 
+							de control switch -->
+			<div ng-switch="opcion">
+				
+				<center>
+					<h2 ng-switch-when="a"> Brujita Hermosa </h2>
+					<h2 ng-switch-when="b"> Rubia Hermosa</h2>	
+				</center>
+				
+			</div>
+
+			<!-- ng-style: Te da acceso a modicar el css del elemento (div, <p>) 
+				 ng-class: Te da acceso a cambiar o agregar una clase al elemento 
+			-->
+			<div class="preguntas" ng-style="estilosAngular" ng-class="claseAngular">
+
+				<button ng-click="opcionA()"> Opcion A </button>
+				<button ng-click="opcionB()"> Opcion B </button>
+				<hr>
+				<button ng-click="cambiarEstilo()"> Cambiar Estilo </button>
+				<button ng-click="cambiarClase()"> Cambiar Clase </button>
+				<hr>
+				<button ng-click="ocultarCajas()"> Ocultar Imagen </button>
+				<button ng-click="mostrarCajas()"> Mostrar Imagen </button>
+
+			</div>
+			
+
+		</div>
+
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var misEstilos = angular.module('estiloApp', []);
+
+			misEstilos.controller('controladorEstilos', function($scope) {
+
+				/* Definimos el src de la directiva ng-src
+				llamada imagenActiva */
+				$scope.imagenActiva = 'img3.jpg'
+
+
+				/* Creamos el metodo opcionA */
+				$scope.opcionA = function(){
+
+					/* Cambiamos el valor de la directiva
+					  ng-switch de nombre opcion */
+					$scope.opcion = 'a';
+
+
+					/* Cambiamos el src de la directiva
+					  ng-src de nombre imagenActiva*/
+					$scope.imagenActiva = 'img.jpg'
+
+				}
+
+				/* Creamos el metodo opcionB */
+				$scope.opcionB = function(){
+
+					/* Cambiamos el valor de la directiva
+					  ng-switch de nombre opcion */
+					$scope.opcion = 'b';
+
+					/* Cambiamos el src de la directiva
+					  ng-src de nombre imagenActiva*/
+					$scope.imagenActiva = 'img2.jpg'
+
+				}
+
+				/* Creamos el metodo cambiarEstilo */
+				$scope.cambiarEstilo = function(){
+
+					/* Accemos a los elementos de directiva ng-style llamada 
+					   estilosAngular y le modificamos el css */
+					$scope.estilosAngular = {
+						width: '600px',
+						height: '200px',
+						borderRadius: '10px'
+					}
+
+				}
+
+				/* Creamos el metodo cambiarClase */
+				$scope.cambiarClase = function(){
+
+					/* Le cambiamos la clase a la directiva ng-class de nombre='claseAngular' */
+					$scope.claseAngular= 'segundoEstilo';
+				}
+
+				/* Creamos el metodo ocultarCajas */
+				$scope.ocultarCajas = function(){
+
+					/* Le pasamos a la directiva ng-hide el valor
+					true para que oculta la imagen*/
+					$scope.ocultarImagen = true;
+
+				}
+
+				/* Creamos el metodo mostrarCajas */
+				$scope.mostrarCajas = function(){
+
+					/* Le pasamos a la directiva ng-hide el valor
+					falsa para que muestre la imagen*/
+					$scope.ocultarImagen = false;
+
+				}
+
+
+			});
+
+		</script>
+
+	</body>
+
+</html>

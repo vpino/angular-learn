@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="filtros">
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Filtros personalizados </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+	
+	<body>
+
+		<!-- Al string le pasamos el filter cambiar, el cual recibe 2 parametros:
+			1. Nuevo caracter que va a quedar
+			2. Caracteres a reemplazar.
+		-->
+		<h1> {{ "dinosaurio" | cambiar: "-": "i" }} </h1>
+
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var filtroApp = angular.module('filtros', []);
+
+			/* Creamos un filtro con el metodo filter el cual recibe 2 parametros:
+				1. El nombre. 
+				2*/
+			filtroApp.filter('cambiar', function(){
+
+				/* Creamos un objeto que guardar el valor de la funcion la cual
+				recibe 3 parametros:
+					1. El String original 
+					2. Los carecteres que se quieren reemplazar
+					3. El valor que va a quedar por los caracteres especificados.
+				*/	
+				var cambiarFiltro = function(datosOriginales, valorQueda, valorReemplazar){
+
+					/* Guardamos los datos  formateados con la funcion replace
+						* Replace: Reemplaza los caracteres expecificados dentro
+						de la funcion RegExp separados por ,  y los reemplaza
+						por el caracter especificado despues de los ), caracter 
+						
+					var nuevosDatos = datosOriginales.replace(RegExp("o", "g"), "_");
+					
+					*/
+					
+					/* Con replace, solo le pasamos los caracteres que queremos reemplazar
+					 separados por "/" y luego una , el nuevo valor que va ir 
+					
+					var nuevosDatos = datosOriginales.replace(/o/g,valorQueda);
+					
+					*/
+
+					/* A RegExp le pasamos 2 parametros:
+						1. Caracteres a reemplazar
+						2. Valor que va quedar por los especificados.
+					 */
+					var nuevosDatos = datosOriginales.replace(RegExp(valorReemplazar, "g"), valorQueda);
+
+					return nuevosDatos;
+
+
+				};
+
+				return cambiarFiltro
+
+			});
+
+		</script>
+
+	</body>
+
+</html>

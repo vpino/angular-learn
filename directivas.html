@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Directivas </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+	
+	<body ng-app="directivas">
+
+		<input type="text" ng-model="textomodelo">
+
+		<p> {{ textomodelo }}</p>
+
+		<!-- ng-bind: Directiva para mostrar expresiones -->
+		<p ng-bind="5+5"></p>
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var directivaApp = angular.module('directivas', []);
+
+			
+		</script>
+
+	</body>
+
+</html>

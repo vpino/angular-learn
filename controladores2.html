@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="controladores">
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Controladores con metodos </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+	
+	<body>
+
+		<div ng-controller="controladorConMetodos">
+
+			<input type="number" ng-model="valor1">
+			<input type="number" ng-model="valor2">
+
+			<!-- Con la directiva ng-click llamamos a la funcion
+				dentro del controlador, en este caso llamamos a
+				sumar()
+			-->
+			<button ng-click="sumar()"> Sumar </button>
+			<button ng-click="multiplicar()"> Multiplicar </button>
+			<br>
+			<p> {{ resultado }} </p>
+		
+		</div>
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var controladorApp = angular.module('controladores', []);
+
+			/* Creamos un controlador*/
+			controladorApp.controller('controladorConMetodos', function ($scope) {
+				
+				/* Accedos al valor del ng-model con el nombre valor1 */
+				$scope.valor1 = 0;
+				$scope.valor2 = 0;
+
+				/* Creamos la funcion sumar */
+				$scope.sumar = function(){
+
+					$scope.resultado = $scope.valor1 + $scope.valor2;
+
+				}
+
+				/* Creamos la funcion multiplicar */
+				$scope.multiplicar = function(){
+
+					$scope.resultado = $scope.valor1 * $scope.valor2;
+
+				}
+
+
+
+
+
+			});
+
+		</script>
+
+	</body>
+
+</html>

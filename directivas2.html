@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Directivas </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+	
+	<body ng-app="directivas">
+
+
+		<p usuario nombre="Victor" apellido="Pino"></p>
+
+		<usuario nombre = "Juancho" apellido= "Tacorta"> </usuario>
+
+		<p class="usuario" nombre="Hugo"></p>
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var directivaApp = angular.module('directivas', []);
+
+			/* Creamos una directiva la cual recibe 2 parametros:
+				1. El nombre.
+				2. Una funcion anonima.
+			*/
+			directivaApp.directive('usuario', function () {
+
+					
+				
+					/* Nota: todas las directivas siempre van a retorna un objeto */
+					var valoresInternos = {};
+
+					/* Restringimos a  directiva 'usuario': }
+						1. restrict = "E" solo sea usada como etiqueta.
+						2. restrict = "A" solo sea usada como atributo.
+						3. restrict = "C" se use como una class (class="nombre_directiva")
+					*/
+					valoresInternos.restrict = "E";
+
+					valoresInternos.scope = {
+						
+						/* @ Indica que hacemos referencia a un atributo*/
+						nombreUsuario:'@nombre',
+						apellidoUsuario:'@apellido'
+					}
+
+					valoresInternos.template = "Bienvenido {{ nombreUsuario }} {{ apellidoUsuario }}";
+
+					return valoresInternos;
+			});
+			
+		</script>
+
+	</body>
+
+</html>

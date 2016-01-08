@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="fechas">
+
+	<head>
+		<meta charset="utf-8">
+		<title> Filtros - Fechas</title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+
+	<body>
+
+		<!-- Con el filtro transformamos una fecha tipo unix a una fecha normal 
+			Al fitro date le pasamos el formato que queremos la fechea 
+			data: 'dd/MM/yy' dias mes año -->
+		{{ '1442439719756' | date: 'dd/MM/yy' }}
+
+		<br>
+
+		<!-- Trasnformo la fecha de unix a Date normal y la llevo a mayusculas 
+			fullDate: muestra la fecha completa -->
+		{{ '1405222862000' | date: 'fullDate' | uppercase}}
+
+		<br>
+
+		<!-- Transformo la fehca de unix a normal y muestro la hora -->
+		{{ '1288323623006' | date: 'yyyy-MM-dd HH:mm:ss'}}
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var fechas = angular.module('fechas', []);
+			
+		</script>
+
+	</body>
+
+</html>

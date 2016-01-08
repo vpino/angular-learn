@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="filtrodatos">
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Filtros personalizados </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+	
+	<body>
+
+		<!-- Creamos un modelo, para luego pasarlo como filtro al
+		     controlador, mediante la directiva ng-repeat -->
+		<input type="text" ng-model="buscarFruta">
+
+		<div ng-controller="listas">
+			
+			<!-- La directiva ng-repeat: simula un for 
+				Con el filter hacemos una busqueda para
+				que muestre solo los <li> que el usuario tipie 
+				en el input que contiene la directiva ng-model="buscarFruta"-->
+			<ul>
+				<li ng-repeat="fruta in frutas | filter: buscarFruta"> {{ fruta }} </li>
+			</ul>
+
+		</div>
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var miApp = angular.module('filtrodatos', []);
+
+			/* Creamos un controlador */
+			miApp.controller('listas', function ($scope) {
+				
+				/* Creamos un array */
+				$scope.frutas = ['Kiwi', 'Manzana', 'Pera'];
+
+			});
+
+
+		</script>
+
+	</body>
+
+</html>
