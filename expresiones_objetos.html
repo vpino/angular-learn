@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- la directiva ng-app define que elemento html 
+	sera una aplicacion angular y se le da un nombre -->
+<html ng-app="objetos">
+	<head>
+		<meta charset="utf-8">
+		<title>Expresiones</title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+
+	<body>
+
+		<div ng-controller="libros">
+
+			<p> El autor del libro es: {{ libro.autor }} </p>
+			<p> El título del libro es: {{ libro.titulo }} </p>
+			<p> El editorial del libro es: {{ libro.editorial }} </p>
+			
+		</div>
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var objetos = angular.module('objetos', []);
+
+			/* Declaramos un controlador y le pasamos el objeto scope */
+			objetos.controller('libros', function($scope){
+
+				/* Declaramos un objeto libro, que sera un objeto lista (diccionario)*/
+				$scope.libro = {};
+
+				/* Le declaramos los atributos que va a tener */
+				$scope.libro.autor = "Victor Pino";
+				$scope.libro.titulo = "Angular Sapbe";
+				$scope.libro.editorial = "Mas bien";
+				
+			});
+
+		</script>
+
+	</body>
+</html>

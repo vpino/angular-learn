@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- la directiva ng-app define que esto es una aplicacion angular 
+	y se le da un nombre
+	a la aplicacion -->
+<html ng-app="expresiones">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Expresiones</title>
+		<script type="text/javascript" src="angular.min.js"></script>
+	</head>
+
+	<body>
+
+		<!-- Le asignamos al div un controlador -->
+		<div ng-controller="miControlador">
+			
+			{{ mensaje }} 
+
+		</div>
+
+		<script type="text/javascript">
+
+			/* Inicializamos angular y sus modulos */
+			var expresiones = angular.module('expresiones', []);
+
+			/* Con el objeto expresiones accedemos a las funciones que tiene angular */
+			
+			/* Declaramos un controlador, recibe 2 parametros
+				1. Nombre del controlador.
+				2. La funcion.
+				 Scope: Variable que utiliza angular para
+				 		acceder a todos los elementos.
+			 */
+			expresiones.controller('miControlador', function($scope){
+			
+				/* Le asignamos un valor al objeto mensaje */
+				$scope.mensaje = "Esto es una expresión";
+
+			});
+
+		</script>
+
+	</body>
+
+</html>
