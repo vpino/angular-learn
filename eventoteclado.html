@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Eventos de teclado </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="angular-touch.min.js"></script>
+
+	</head>
+
+	<body ng-app="eventosApp">
+
+		<div ng-controller="eventosController">
+
+			<!-- ng-keydown: Directiva que llaman al evento cuando se presiona
+							una tecla y se suelta.
+
+				$event: Variable de angular que recupera el evento -->
+
+			<input type="text" autofocus="true" ng-keydown="detectarTecla($event)">
+			<br>
+
+			<p> {{ estado }} </p>
+
+		</div>
+
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var miApp = angular.module('eventosApp', []);
+
+			/* Creamos el controlador */
+			miApp.controller('eventosController', function($scope) {
+
+				/* Funcion para detectar la tecla pisada la cual 
+				 	recibe como parametro la tecla pisada */
+				$scope.detectarTecla = function(e){
+
+					/* keyCode: Obtenemos el codigo de la tecla pisada */
+					switch(e.keyCode){
+						
+						case 37:
+
+							$scope.estado = "izquierda";
+
+							break;
+
+						case 38:
+
+							$scope.estado = "arriba";
+
+							break;
+
+						case 39:
+
+							$scope.estado = "derecha";
+
+							break;
+
+						case 40:
+
+							$scope.estado = "abajo";
+
+							break;
+
+						default:
+
+							$scope.estado = "error";
+							break;
+
+					}
+				}
+
+			});
+
+			
+		</script>
+
+	</body>
+
+</html>

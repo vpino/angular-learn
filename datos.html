@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Colecciones de datos  </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+
+	</head>
+
+	<body ng-app="coleccionesApp">
+
+		<div ng-controller="coleccionesController">
+
+			<ul>
+				<li> </li>
+			</ul>
+
+			
+		</div>
+
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var coleccionDatosApp = angular.module('coleccionesApp', []);
+
+			/* Creamos el controlador */
+			coleccionDatosApp.controller('coleccionesController', function($scope) {
+
+				$scope.datos = ['piedra', 'papel', 'tijera'];
+
+				/* Metodo que permite agregar mas datos al array */
+				$scope.agregar = function(){
+
+
+				}
+
+				/* Metodo que mostrar los datos del array */
+				$scope.mostrarDatos = function(){
+
+					
+				}
+
+			});
+
+			
+		</script>
+
+	</body>
+
+</html>

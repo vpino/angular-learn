@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title> Eventos Angular JS </title>
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="angular-touch.min.js"></script>
+
+
+		<style type="text/css">
+			#cuadrado{ background: red; width: 100px; height: 100px; margin: 30px 10px;}
+		</style>
+
+	</head>
+
+	<body ng-app="eventosApp">
+
+		<div ng-controller="eventosController">
+
+			<button ng-click="saludo()"> Click </button>
+
+			<button ng-dblclick="saludo()"> Double Click </button>
+
+			<p ng-click="saludo()"> Tambien funciona con un parrafo </p>
+			
+			<strong> {{ conteoClicks }}</strong>
+
+			<!--Con las directivas ng-swipe-left y righ le damos soporte a los dispositivos
+			tactiles  -->
+			<div id="cuadrado" ng-mouseenter="dentroDelDiv()" ng-mouseleave="fueraDelDiv()"
+			ng-swipe-left="swipeIzq()" ng-swipe-right="swipeDer()">
+			Aloha
+			</div>
+
+			<strong> Estado {{ estado }}</strong>
+
+		</div>
+
+
+		<script type="text/javascript">
+
+			/* Inicializamos la aplicacion angular y sus modulos */
+			var miApp = angular.module('eventosApp', ['ngTouch']);
+
+			/* Creamos el controlador */
+			miApp.controller('eventosController', function($scope) {
+
+				/* Inicializamos la variable conteoClicks */
+				$scope.conteoClicks = 0;
+
+				$scope.estado = 'mouse';
+
+				/* Creamos el metodo saludo */
+				$scope.saludo = function(){
+
+					/* Incrimentamos la variable*/
+					$scope.conteoClicks++;
+
+				}
+
+				$scope.dentroDelDiv = function(){
+
+					$scope.estado = "MouseEnter Activo";
+
+				}
+
+				$scope.fueraDelDiv = function(){
+
+					$scope.estado = "MouseLeave Activo";
+
+				}
+
+				$scope.swipeIzq = function(){
+
+					$scope.estado = "<-- Swipe";
+
+				}
+
+				$scope.swipeDer = function(){
+
+					$scope.estado = "Swipe -->";
+
+				}
+
+			});
+
+			
+		</script>
+
+	</body>
+
+</html>
