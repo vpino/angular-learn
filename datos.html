@@ -13,10 +13,16 @@
 		<div ng-controller="coleccionesController">
 
 			<ul>
-				<li> </li>
+				<li ng-repeat="datoIndividual in datos" ng-click="mostrarDato(datoIndividual)"> {{ datoIndividual }} </li>
 			</ul>
 
-			
+			<input type="text" ng-model="nuevoItem">
+
+			<button ng-click="agregar()"> Agregar </button>
+
+			<ul>
+				<li ng-repeat="actor in actores" ng-click="mostrarDato(actor.Apellido)"> {{ actor.Nombre }} </li>
+			</ul>
 		</div>
 
 
@@ -30,15 +36,25 @@
 
 				$scope.datos = ['piedra', 'papel', 'tijera'];
 
+				$scope.actores = [
+					{Nombre: "Chuck", Apellido: "Norris"},
+					{Nombre: "Bruce", Apellido: "Lee"},
+					{Nombre: "Pelo", Apellido: "E'Concha"}
+
+				];
+
 				/* Metodo que permite agregar mas datos al array */
 				$scope.agregar = function(){
 
+					/* El metodo push permite añadir un nuevo elemento al array */
+					$scope.datos.push($scope.nuevoItem);
 
 				}
 
-				/* Metodo que mostrar los datos del array */
-				$scope.mostrarDatos = function(){
+				/* Metodo para mostrar un dato del array */
+				$scope.mostrarDato = function(elemento){
 
+					alert('Elegiste: ' + elemento);
 					
 				}
 
