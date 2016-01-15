@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link data-require="bootstrap@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script data-require="bootstrap@*" data-semver="3.3.1" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script data-require="angular.js@1.3.0" data-semver="1.3.0" src="https://code.angularjs.org/1.3.0/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js"></script>
+  </head>
+ 
+  <body ng-app="formApp">
+    <div class="container">
+      <h2>Formulario de AngularJS!</h2>
+ 
+      <div ng-controller="MainCtrl">
+        <form name="exampleForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+
+
+            <input type="text" class="form-control" placeholder="name" name="name" ng-model="formData.name" required>
+
+            <!--$pristine: booleano que marca True si el usuario no ha ingresado nada en el formulario, es decir si el 
+                           formulario no se ha usado.
+
+                $error: se acceden a los distintos errores que puede tener un componente.
+
+                ng-show: Directiva para leer y mostrar expresiones, en este caso le pasamos:
+
+                  !exampleForm.$pristine && Nombre_formulario.nombre_del_input.$error.required
+
+                  $pristine: si el ya se ha ingresado información al formulario.
+
+                  Si error.required es true: muestra el texto en el span
+            -->
+            <span ng-show="!exampleForm.$pristine && exampleForm.name.$error.required">Name is required.</span>
+          </div>
+ 
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" placeholder="last name" name="lastname" ng-model="formData.lastname" required>
+          </div>
+ 
+          <div class="form-group">
+            <label for="email">Email</label>
+            <!-- ng-class Usando la directiva, se puede aplicar un estilo de acuerdo a una
+            expresión la cual incluso puede ser un objeto. El estilo error, se aplica cuando el
+            campo es requerido y no se ingresó nada. El estilo warning, se aplicará cuando exista un error en la estructura del correo electrónico ingresado -->
+            <input type="email" class="form-control" placeholder="example@email.com" name="email" ng-model="formData.email" required ng-class="{ error: exampleForm.email.$error.required && !exampleForm.$pristine, warning: exampleForm.email.$error.email }">
+
+
+            <!-- #error.email = Propiedad que retorna true si el email ingresado 
+                                es validado y false lo contrario
+            -->
+            <span ng-show="!exampleForm.$pristine && exampleForm.email.$error.email">Please enter a valid email</span>
+
+          </div>
+
+          <!-- ng-disabled: Esta directiva, recibe una expresión. Si la expresión da como resultado True, 
+                            el componente se deshabilita.
+                
+                $valid:  propiedad que valida si el elemento esta correcto o no.
+          -->
+ 
+          <input type="url" class="form-control" placeholder="url" name="url" ng-model="formData.url" required>
+
+
+          <input type="submit" class="btn btn-success pull-right" ng-click="submitForm(formData)" ng-disabled="!exampleForm.$valid">
+
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
